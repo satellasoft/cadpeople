@@ -1,0 +1,154 @@
+*{
+  margin: 0 auto;
+  padding: 0;
+}
+
+a{
+  text-decoration: none;
+  color: magenta;
+}
+
+body{
+  background-color: #282c34;
+}
+
+h1{
+  color: #FFF;
+}
+
+table{
+  width: 100%;
+}
+
+table td, table th{
+  padding:5px;
+}
+
+table tr:hover{
+  background-color: #EEE;
+}
+
+.alert{
+  padding: 15px;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.max-width{
+  max-width: 1280px;
+  width: 100%;
+}
+
+.middle-width{
+  max-width: 500px;
+  width: 100%;
+}
+
+.input-text{
+  padding: 15px;
+  width: 100%;
+  max-width: 500px;
+  font-size: 1.1em;
+  outline: none;
+  border:1px solid #2295c9;
+}
+
+.input-text:focus{
+  box-shadow: 0 0 5px #2295c9;
+}
+
+.float-right{
+  float: right;
+}
+
+.float-left{
+  float: left;
+}
+
+.clear{
+  clear: both;
+}
+
+.box{
+  background-color: #FFF;
+  box-sizing: border-box;
+  border-radius: 3px;
+  padding: 5px;
+}
+
+.btn{
+  border: none;
+  border-radius: 3px;
+  padding: 15px;
+  cursor: pointer;
+  font-size: 1.1em;
+  text-transform: uppercase;
+  color: #FFF;
+}
+
+.bg-green{
+  background-color: #47ba6b;
+}
+
+.bg-green:hover{
+  background-color: #0b8f36;
+}
+
+.bg-blue{
+  background-color: #2295c9;
+}
+
+.bg-blue:hover{
+  background-color: #0f648a;
+}
+
+.bg-red{
+  background-color: #cc2530;
+}
+
+.bg-red:hover{
+  background-color: #8f1018;
+}
+
+.bg-white{
+  background-color: #ebebeb;
+}
+
+.bg-white:hover{
+  background-color: #CCC;
+}
+
+.text-left{
+  text-align: left;
+}
+
+.text-right{
+  text-align: right;
+}
+
+.text-center{
+  text-align: center;
+}
+
+.text-dark{
+  color: #111;
+}
+
+.form-control{
+margin:10px;
+}
+
+.form-control label{
+  display: block;
+  font-weight: bold;
+  font-size:1.1em;
+  color: #2295c9;
+}
+
+#imgLogo{
+  margin: 10px;
+  max-width: 100px;
+  width: 100%;
+  border: none;
+}
