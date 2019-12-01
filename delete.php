@@ -1,6 +1,11 @@
 <?php
-$id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT);
-//Code remove
+require_once("vendor/autoload.php");
+use App\Controller\PessoaController;
 
-header("Location: index.php");
-?>
+$id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT);
+
+if((new PessoaController())->delete($id)){
+  header("Location: index.php");
+}else{
+  echo "Erro ao deletar pessoa";
+}

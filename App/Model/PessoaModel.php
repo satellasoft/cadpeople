@@ -21,6 +21,29 @@ class PessoaModel{
         ":estado" => $pessoa->getEstado(),
       ];
 
+      $result =  $this->pdo->ExecuteNonQuery($sql, $params);
+
+      if($result > 0)
+        return $this->pdo->GetLastID();
+      else
+        return -1;
+    }catch(PDOException $ex){
+      echo "ERRO: {$ex->getMessage()}";
+      return false;
+    }
+  }
+
+  public function update(Pessoa $pessoa){
+    try{
+      $sql = "UPDATE pessoa SET nome = :nome, email = :email, sexo = :sexo, estado = :estado WHERE id = :id";
+      $params = [
+        ":id"     => $pessoa->getId(),
+        ":nome"   => $pessoa->getNome(),
+        ":email"  => $pessoa->getEmail(),
+        ":sexo"   => $pessoa->getSexo(),
+        ":estado" => $pessoa->getEstado()
+      ];
+
       return $this->pdo->ExecuteNonQuery($sql, $params);
     }catch(PDOException $ex){
       echo "ERRO: {$ex->getMessage()}";
@@ -35,16 +58,36 @@ class PessoaModel{
       $list = [];
 
       foreach($dt as $dr){
-          $list[] = new Pessoa(
-            $dr["id"],
-            $dr["nome"],
-            $dr["email"],
-            $dr["sexo"],
-            $dr["estado"]
-          );
+        $list[] = new Pessoa(
+          $dr["id"],
+          $dr["nome"],
+          $dr["email"],
+          $dr["sexo"],
+          $dr["estado"]
+        );
       }
 
       return $list;
+    } catch(PDOException $ex){
+      echo "ERRO: {$ex->getMessage()}";
+      return false;
+    }
+  }
+
+  public function getById(int $pessoaId){
+    try {
+      $sql = "SELECT nome, email, sexo, estado  FROM pessoa WHERE id = :id";
+      $param = [":id"  => $pessoaId];
+
+      $dr = $this->pdo->ExecuteQueryOneRow($sql, $param);
+      return  new Pessoa(
+        $pessoaId,
+        $dr["nome"],
+        $dr["email"],
+        $dr["sexo"],
+        $dr["estado"]
+      );
+
     } catch(PDOException $ex){
       echo "ERRO: {$ex->getMessage()}";
       return false;
@@ -62,17 +105,29 @@ class PessoaModel{
       $list = [];
 
       foreach($dt as $dr){
-          $list[] = new Pessoa(
-            $dr["id"],
-            $dr["nome"],
-            $dr["email"],
-            $dr["sexo"],
-            $dr["estado"]
-          );
+        $list[] = new Pessoa(
+          $dr["id"],
+          $dr["nome"],
+          $dr["email"],
+          $dr["sexo"],
+          $dr["estado"]
+        );
       }
 
       return $list;
     } catch(PDOException $ex){
+      echo "ERRO: {$ex->getMessage()}";
+      return false;
+    }
+  }
+
+  public function delete(int $pessoaId){
+    try{
+      $sql = "DELETE FROM pessoa WHERE id = :id";
+      $param = [":id" => $pessoaId];
+
+      return $this->pdo->ExecuteNonQuery($sql, $param);
+    }catch(PDOException $ex){
       echo "ERRO: {$ex->getMessage()}";
       return false;
     }

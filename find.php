@@ -33,6 +33,7 @@ if($term){
             <th>#ID</th>
             <th>Nome</th>
             <th>E-mail</th>
+            <th>Sexo</th>
             <th>Estado</th>
             <th>Editar</th>
             <th>Deletar</th>
@@ -49,6 +50,12 @@ if($term){
               <td><?=$pessoa->getEmail();?></td>
               <td><?=$pessoa->getSexo() == "F" ? "Feminino" : "Masculuno";?></td>
               <td><?=$pessoa->getEstado();?></td>
+              <td>
+                <a href="update.php?id=<?=$pessoa->getId();?>" class="btn bg-blue">Editar</a>
+              </td>
+              <td>
+                <a href="delete.php?id=<?=$pessoa->getId();?>" class="btn bg-red" onclick="return confirm('Deseja remover?')">Remover</a>
+              </td>
             </tr>
             <?php
           }

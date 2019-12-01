@@ -20,12 +20,16 @@ table{
   width: 100%;
 }
 
-table td, table th{
-  padding:5px;
+table tr td, table tr th{
+  padding:18px;
 }
 
 table tr:hover{
   background-color: #EEE;
+}
+
+.margin{
+  margin 5px;
 }
 
 .alert{

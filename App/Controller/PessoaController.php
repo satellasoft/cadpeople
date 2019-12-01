@@ -25,23 +25,48 @@ class PessoaController{
     if(strlen($pessoa->getEstado()) != 2)
     return false;
 
-    return $this->pessoaModel->create($pessoa);
+    $result = $this->pessoaModel->create($pessoa);
+    if($result > 0){
+      header("Location: update.php?id=" . $result);
+    }
   }
 
-  public function update($nome, $email){
-    echo "Update";
+  public function update(Pessoa $pessoa){
+    if($pessoa->getId() < 1)
+      return false;
+
+    if(strlen($pessoa->getNome()) < 3 || strlen($pessoa->getNome()) > 100)
+      return false;
+
+    if(strlen($pessoa->getEmail()) < 5)
+      return false;
+
+    if($pessoa->getSexo() != "F")
+      if($pessoa->getSexo() != "M")
+        return false;
+
+    if(strlen($pessoa->getEstado()) != 2)
+      return false;
+
+    return $this->pessoaModel->update($pessoa);
   }
 
-  public function delete(){
-    echo "Delete";
+  public function delete(int $pessoaId){
+    if($pessoaId < 1)
+      return false;
+
+    return $this->pessoaModel->delete($pessoaId);
   }
 
   public function getAll(){
     return $this->pessoaModel->getAll();
   }
 
-  public function getById(){
-    echo "Get by id";
+  public function getById(int $pessoaId){
+    if($pessoaId < 1)
+      return null;
+
+    return $this->pessoaModel->getbyId($pessoaId);
   }
 
   public function search(string $term){
